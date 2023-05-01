@@ -47,7 +47,7 @@ export const CardContainer = styled.View(() => ({
 
 export const PreLoad = styled(ActivityIndicator).attrs((props) => ({
   size: props.size || "large",
-  margin: 30,
+  margin: 0,
 }))`
   flex: 1;
 `;

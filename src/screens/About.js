@@ -76,7 +76,7 @@ const About = () => {
           {validateurl ? (
             <Link
               url={updatesurl}
-              children={updatestitle || "No updates available"}
+              children={updatestitle || "..."}
               color="#4CAF50"
             />
           ) : (

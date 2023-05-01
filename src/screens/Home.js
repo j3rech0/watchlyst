@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Header, ScrollCard, SearchCard, SearchResult } from "../components";
 import { useNetInfo } from "@react-native-community/netinfo";
 import { API_URL, API_KEY } from "@env";
-import { RefreshControl } from "react-native";
 import {
   ScrollViewContainer,
   ContentWrapper,
@@ -11,6 +10,8 @@ import {
   LinearGradientTop,
   ParagraphWarning,
   Paragraph,
+  PreLoad,
+  FlexInline,
 } from "../../style";
 
 const Cards = (props) => {
@@ -31,7 +32,6 @@ const Home = (props) => {
   const [noresult, setNoResult] = useState(false);
   const [clicked, setClicked] = useState(false);
   const [movieData, setmovieData] = useState();
-  const [refreshing, setRefreshing] = useState(true);
   const netInfo = useNetInfo();
 
   const getSearchData = async () => {
@@ -47,8 +47,6 @@ const Home = (props) => {
       const data = await apiResponse.json();
       const result = [...data.results.values()];
       const zeroresult = Object.keys(result).length;
-
-      setRefreshing(false);
 
       if ((zeroresult === 0) & clicked) {
         setNoResult(true);
@@ -91,13 +89,6 @@ const Home = (props) => {
         <ScrollViewContainer
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
-          refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={Cards}
-              progressBackgroundColor="#00E6BE"
-            />
-          }
         >
           <Cards
             title="Trending"
@@ -118,8 +109,11 @@ const Home = (props) => {
         <>
           {noresult ? (
             <Paragraph marginLeft={30}>No result(s) found</Paragraph>
-          ) : !movieData ? (
-            <Paragraph marginLeft={30}>Searching...</Paragraph>
+          ) : !movieData && netInfo.isConnected ? (
+            <FlexInline marginLeft={40}>
+              <PreLoad size="small" color="#00E6BE50" />
+              <Paragraph marginLeft={20}>Searching...</Paragraph>
+            </FlexInline>
           ) : (
             <SearchResult data={movieData} />
           )}
