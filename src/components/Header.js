@@ -1,10 +1,10 @@
 import React from "react";
-import { Head, Paragraph } from "../../style";
+import { Head, Paragraph, SVGBack, SVGContainer } from "../../style";
 import { Pressable } from "react-native";
 import Svg from "react-native-svg";
 import { SVGLogoOnly, SVGLogoCenter, SVGMenu } from "../../style";
 import { useNavigation } from "@react-navigation/native";
-const Header = () => {
+const Header = (props) => {
   const navigation = useNavigation();
 
   return (
@@ -19,7 +19,7 @@ const Header = () => {
         <SVGLogoCenter />
       </Svg>
       <Pressable
-        onPress={() => navigation.navigate("About")}
+        onPress={() => navigation.navigate(props?.linkTo || "About")}
         android_ripple={{
           color: "#ffffff60",
           radius: 20,
@@ -27,14 +27,25 @@ const Header = () => {
           borderless: true,
         }}
       >
-        <Svg
-          width="30"
-          height="20"
-          viewBox="-4 0 30 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <SVGMenu />
-        </Svg>
+        {!props.buttonIcon ? (
+          <Svg
+            width="30"
+            height="20"
+            viewBox="-4 0 30 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <SVGMenu />
+          </Svg>
+        ) : (
+          <Svg
+            width="27"
+            height="27"
+            viewBox="-4 -2 27 27"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <SVGBack />
+          </Svg>
+        )}
       </Pressable>
     </Head>
   );

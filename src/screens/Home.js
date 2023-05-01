@@ -9,7 +9,6 @@ import {
   FeatureContainer,
   Heading,
   LinearGradientTop,
-  PreLoad,
   ParagraphWarning,
   Paragraph,
 } from "../../style";
@@ -17,8 +16,12 @@ import {
 const Cards = (props) => {
   return (
     <FeatureContainer>
-      <Heading>{props?.title}</Heading>
-      <ScrollCard api_url={props?.api_url} />
+      <Heading>{props.title || "..."}</Heading>
+      {!props.api_url ? (
+        <Paragraph marginLeft={30}>...</Paragraph>
+      ) : (
+        <ScrollCard api_url={props?.api_url} />
+      )}
     </FeatureContainer>
   );
 };
@@ -30,7 +33,6 @@ const Home = (props) => {
   const [movieData, setmovieData] = useState();
   const [refreshing, setRefreshing] = useState(true);
   const netInfo = useNetInfo();
-  /* <PreLoad size="large" color="#00E6BE50" /> */
 
   const getSearchData = async () => {
     try {
@@ -115,7 +117,9 @@ const Home = (props) => {
       ) : (
         <>
           {noresult ? (
-            <Paragraph marginLeft={30}>No result</Paragraph>
+            <Paragraph marginLeft={30}>No result(s) found</Paragraph>
+          ) : !movieData ? (
+            <Paragraph marginLeft={30}>Searching...</Paragraph>
           ) : (
             <SearchResult data={movieData} />
           )}

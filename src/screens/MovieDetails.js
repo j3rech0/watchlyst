@@ -89,7 +89,7 @@ const Movie = ({ props, route }) => {
           paddingBottom="30px"
         >
           <PullCorner>
-            <Header navigation={props} />
+            <Header navigation={props} linkTo="Home" buttonIcon />
           </PullCorner>
 
           <HeadingLarge fontSize="25px" marginLeft="10px">
@@ -136,20 +136,6 @@ const Movie = ({ props, route }) => {
 
           <FlexInline marginTop={0} marginLeft={10} marginBottom={0}>
             <ButtonIcon
-              onPress={() => navigation.goBack()}
-              marginTop="0"
-              alignItems="flex-start"
-              justifyContent="flex-start"
-              marginLeft="0"
-              flex={1}
-            >
-              <SVGContainer width={27} height={27} viewBox="0 0 27 27">
-                <SVGBack />
-              </SVGContainer>
-              <Paragraph width="auto">{back}</Paragraph>
-            </ButtonIcon>
-
-            <ButtonIcon
               onPress={_handlePressButtonAsync}
               marginTop="0"
               justifyContent="flex-end"
@@ -157,7 +143,13 @@ const Movie = ({ props, route }) => {
               marginRight={10}
               flex={1}
             >
-              <Paragraph width="auto" marginRight={10} color="#4CAF50">
+              <Paragraph
+                width="auto"
+                marginRight={10}
+                color="#4CAF50"
+                fontSize={17}
+                lineHeight={27}
+              >
                 {play}
               </Paragraph>
               <SVGContainer width={27} height={27} viewBox="0 0 27 27">

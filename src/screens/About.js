@@ -4,11 +4,8 @@ import {
   LinearGradientTop,
   HeadingLarge,
   Paragraph,
-  ButtonIcon,
   ContentWrapper,
   Flex,
-  SVGContainer,
-  SVGBack,
   AboutList,
   AboutContainer,
 } from "../../style";
@@ -55,7 +52,7 @@ const About = () => {
   return (
     <ContentWrapper position="relative">
       <LinearGradientTop end={{ x: 0.8, y: 0.5 }} />
-      <Header />
+      <Header linkTo="Home" buttonIcon />
 
       <AboutContainer>
         <HeadingLarge fontSize="25px">{about}</HeadingLarge>
@@ -80,22 +77,12 @@ const About = () => {
             <Link
               url={updatesurl}
               children={updatestitle || "No updates available"}
+              color="#4CAF50"
             />
           ) : (
             <Paragraph>{updatestitle}</Paragraph>
           )}
         </Flex>
-
-        <ButtonIcon
-          onPress={() => navigation.goBack()}
-          marginTop={120}
-          alignSelf="flex-end"
-        >
-          <SVGContainer width={27} height={27} viewBox="0 0 27 27">
-            <SVGBack />
-          </SVGContainer>
-          <Paragraph width="auto">{back}</Paragraph>
-        </ButtonIcon>
       </AboutContainer>
     </ContentWrapper>
   );

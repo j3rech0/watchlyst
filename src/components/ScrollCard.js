@@ -60,38 +60,42 @@ const App = (props) => {
       data={data}
       renderItem={({ item, index }) => (
         <>
-          <Pressable
-            onPress={() =>
-              navigation.navigate("Movie", {
-                passParameters: item,
-              })
-            }
-          >
-            <BackgroundImage
-              source={{
-                uri: "https://image.tmdb.org/t/p/w300" + item.backdrop_path,
-              }}
-              key={index}
+          {!item ? (
+            <Paragraph>no item</Paragraph>
+          ) : (
+            <Pressable
+              onPress={() =>
+                navigation.navigate("Movie", {
+                  passParameters: item,
+                })
+              }
             >
-              <CardContainer width={itemWidth}>
-                <CardText>
-                  <Paragraph
-                    color="#fafafa"
-                    numberOfLines={2}
-                    marginLeft={10}
-                    width={138}
-                    lineHeight="20px"
-                    textAlign="left"
-                  >
-                    {item.original_title || item.original_name}
-                  </Paragraph>
-                  <Petsa paddingLeft={10} paddingTop={2} color="#ffffff80">
-                    {dateFormat(item.release_date)}
-                  </Petsa>
-                </CardText>
-              </CardContainer>
-            </BackgroundImage>
-          </Pressable>
+              <BackgroundImage
+                source={{
+                  uri: "https://image.tmdb.org/t/p/w300" + item.backdrop_path,
+                }}
+                key={index}
+              >
+                <CardContainer width={itemWidth}>
+                  <CardText>
+                    <Paragraph
+                      color="#fafafa"
+                      numberOfLines={2}
+                      marginLeft={10}
+                      width={138}
+                      lineHeight="20px"
+                      textAlign="left"
+                    >
+                      {item.original_title || item.original_name}
+                    </Paragraph>
+                    <Petsa paddingLeft={10} paddingTop={2} color="#ffffff80">
+                      {dateFormat(item.release_date)}
+                    </Petsa>
+                  </CardText>
+                </CardContainer>
+              </BackgroundImage>
+            </Pressable>
+          )}
         </>
       )}
     />
