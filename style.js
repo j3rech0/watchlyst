@@ -270,7 +270,7 @@ export const SearchBoxContainer = styled.View(() => ({
   marginBottom: 20,
   paddingLeft: 20,
   height: 54,
-  borderRadius: 54,
+  borderRadius: 10,
   flexDirection: "row-reverse",
   alignItems: "center",
 }));

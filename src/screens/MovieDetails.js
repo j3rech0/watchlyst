@@ -148,7 +148,7 @@ const Movie = ({ props, route }) => {
                 marginRight={10}
                 color="#4CAF50"
                 fontSize={17}
-                lineHeight={27}
+                lineHeight="27px"
               >
                 {play}
               </Paragraph>
