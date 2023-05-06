@@ -7,7 +7,7 @@ export const DATA = [
     authorTitle: "Author",
     updateTitle: "Updates",
     about:
-      "Using TMDB API, WATCHLYST is a React Native app with a Home screen featuring Trending, Popular, and Top rated categories, search, Movie details, and About sections...",
+      "Using TMDB API, WATCHLYST is a React Native app with a Home screen featuring Trending, Popular, and Top rated categories, search, Movie details, and About sections.",
     author: [
       {
         icon: <SVGWeb />,

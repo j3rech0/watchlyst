@@ -91,7 +91,7 @@ const Home = (props) => {
           showsHorizontalScrollIndicator={false}
         >
           <Cards
-            title="Trending"
+            title="Trending!!!"
             api_url={`${API_URL}trending/all/day?api_key=${API_KEY}&media_type=movie&time_window=day`}
           />
 

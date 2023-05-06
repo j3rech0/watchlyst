@@ -4,7 +4,7 @@
     "slug": "watchlyst",
     "owner": "j3ch",
     "description": "Using TMDB API, WATCHLYST is a React Native app with a Home screen featuring Trending, Popular, and Top rated categories, search, Movie details, and About sections.",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
     "userInterfaceStyle": "automatic",
@@ -28,7 +28,7 @@
         "projectId": "a5425e41-b62e-4f37-926a-c0352132f858"
       }
     },
-    "runtimeVersion": "1.0.2",
+    "runtimeVersion": "1.0.3",
     "updates": {
       "url": "https://u.expo.dev/a5425e41-b62e-4f37-926a-c0352132f858"
     },
